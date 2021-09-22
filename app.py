@@ -11,11 +11,8 @@ app = Flask('app')
 def test():
     return "yeah"
 
-
 @app.route('/res', methods=['GET', 'POST'])
 def res():
-    # if request.method == 'POST':
-    #     pass
     return "yo"
 
 if __name__ == '__main__':
