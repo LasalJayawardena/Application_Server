@@ -7,13 +7,20 @@ import time
 
 app = Flask('app')
 
-@app.route('/test', methods=['GET', 'POST'])
+@app.route('/verify', methods=['GET', 'POST'])
 def test():
-    return "yeah"
+    if request.method == 'GET':
+        return "<h1>verify path works</h1>"
+    if request.method == 'POST':
+        return "POST hit"
 
-@app.route('/res', methods=['GET', 'POST'])
-def res():
-    return "yo"
+@app.route('/generate, methods=['GET', 'POST'])
+def generate):
+    if request.method == 'GET':
+        return "<h1>generate path works</h1>"
+    if request.method == 'POST':
+        return "POST hit"
+
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0')
