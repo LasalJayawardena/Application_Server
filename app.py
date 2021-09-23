@@ -43,6 +43,7 @@ def generate():
             tel_str = request.args.get("tel")
             gen_params = generate_params
             gen_params["subscriberId"] = tel_str
+            print(gen_params)
             response = requests.post(generate_url, params=gen_params)
             response_content  = dict(response.content)
             current_ref_num = response_content["referenceNo"]
