@@ -55,7 +55,7 @@ def generate():
             # return response.content
             # if response.status_code != 200:
 
-            response_content  = dict(response.content)
+            response_content  = dict(response)
             print(response_content)
             current_ref_num = response_content["referenceNo"]
             print(current_ref_num)
