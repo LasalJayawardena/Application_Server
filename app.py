@@ -85,7 +85,7 @@ def verify():
             verify_p = verify_params
             verify_p["otp"] = otp
             print("otp is", otp)
-            return json.dumps({"code":200, "status": "valid"})
+            # return json.dumps({"code":200, "status": "valid"})
             # verify_p["referenceNo"] = current_ref_num
             response = requests.post(verify_url, headers=headers_dict, data=json.dumps(verify_p))
             response_content  = json.loads(response.text)
