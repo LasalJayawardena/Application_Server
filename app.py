@@ -56,6 +56,7 @@ def generate():
             # if response.status_code != 200:
 
             response_content  = dict(response.content)
+            print(response_content)
             current_ref_num = response_content["referenceNo"]
             print(current_ref_num)
             return json.dumps({"code":200, "status": "good"})
