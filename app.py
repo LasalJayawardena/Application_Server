@@ -65,7 +65,7 @@ def generate():
             return json.dumps({"code":200, "status": "good"})
         except Exception as e:
             print(e)
-            return json.dumps({"code":400, "status": "error", "error": str(e)})
+            return json.dumps({"code":400, "status": "error", "referenceNo":current_ref_num ,"error": str(e)})
         return "POST hit"
     else:
         return "Unknown Request type."
@@ -82,7 +82,7 @@ def verify():
             verify_p = verify_params
             verify_p["otp"] = otp
             verify_p["referenceNo"] = current_ref_num
-            response = requests.post(generate_url, headers=headers_dict, data=json.dumps(verify_p))
+            response = requests.post(verify_url, headers=headers_dict, data=json.dumps(verify_p))
             response_content  = json.loads(response.text)
             print(response_content)
             success = response_content["subscriptionStatus"]
