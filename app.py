@@ -82,11 +82,13 @@ def verify():
             verify_p["otp"] = otp
             verify_p["referenceNo"] = current_ref_num
             response = requests.post(generate_url, headers=headers_dict, data=json.dumps(verify_p))
-            response_content  = json.load(response.text)
-            success = response_content["subscriptionStatus"]
-            print(success)
-            # return status
-            return json.dumps({"code":200, "status": success,})
+            return response
+            # return 
+            # response_content  = json.load(response.text)
+            # success = response_content["subscriptionStatus"]
+            # print(success)
+            # # return status
+            # return json.dumps({"code":200, "status": success,})
         except Exception as e:
             print(e)
             return json.dumps({"code":400, "status": "error", "error": str(e)})
