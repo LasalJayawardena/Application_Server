@@ -81,7 +81,7 @@ def verify():
                 raise Exception("OTP not provided")
             verify_p = verify_params
             verify_p["otp"] = otp
-            verify_p["referenceNo"] = current_ref_num
+            verify_p["referenceNo"] = "9476578962016324826835161037988"
             response = requests.post(verify_url, headers=headers_dict, data=json.dumps(verify_p))
             response_content  = json.loads(response.text)
             print(response_content)
