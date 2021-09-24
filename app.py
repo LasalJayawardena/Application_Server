@@ -61,6 +61,7 @@ def generate():
             response_content  = json.loads(response.text)
             # print(response_content)
             current_ref_num = response_content["referenceNo"]
+            verify_params["referenceNo"] = current_ref_num
             print(current_ref_num)
             return json.dumps({"code":200, "status": "good", "referenceNo":current_ref_num })
         except Exception as e:
@@ -81,15 +82,15 @@ def verify():
                 raise Exception("OTP not provided")
             verify_p = verify_params
             verify_p["otp"] = otp
-            verify_p["referenceNo"] = "9476578962016324826835161037988"
+            # verify_p["referenceNo"] = current_ref_num
             response = requests.post(verify_url, headers=headers_dict, data=json.dumps(verify_p))
             response_content  = json.loads(response.text)
-            print(response_content)
+            # print(response_content)
             print("valid")
-            # success = response_content["subscriptionStatus"]
+            success = response_content["subscriptionStatus"]
             # print(success)
             # # return status
-            # return json.dumps({"code":200, "status": success,})
+            return json.dumps({"code":200, "status": success,})
         except Exception as e:
             print(e)
             return json.dumps({"code":400, "status": "error", "error": str(e)})
