@@ -52,7 +52,7 @@ def generate():
             return json.dumps({"code":200, "status": "good"})
         except Exception as e:
             print(e)
-            return json.dumps({"code":400, "status": "fail", "error": str(e)})
+            return json.dumps({"code":400, "status": "error", "error": str(e)})
         return "POST hit"
     else:
         return "Unknown Request type."
@@ -74,7 +74,7 @@ def verify():
             return json.dumps({"code":200, "status": success,})
         except Exception as e:
             print(e)
-            return json.dumps({"code":400, "status": "fail", "error": str(e)})
+            return json.dumps({"code":400, "status": "error", "error": str(e)})
     else:
         "Unknown Request type."
 
