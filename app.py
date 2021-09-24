@@ -85,7 +85,7 @@ def verify():
             # verify_p["referenceNo"] = current_ref_num
             response = requests.post(verify_url, headers=headers_dict, data=json.dumps(verify_p))
             response_content  = json.loads(response.text)
-            # print(response_content)
+            print(response_content)
             print("valid")
             success = response_content["subscriptionStatus"]
             # print(success)
