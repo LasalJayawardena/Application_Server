@@ -54,7 +54,7 @@ def generate():
             gen_params["subscriberId"] = tel_str
             print("\n"+tel_str+"\n")
             response = requests.post(generate_url, headers=headers, data=gen_params)
-            return response
+            return str(response)
             # return response.content
             # if response.status_code != 200:
             # print(response.__dict__)
