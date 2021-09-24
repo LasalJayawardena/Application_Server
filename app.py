@@ -48,7 +48,7 @@ def generate():
             response_content  = dict(response.content)
             current_ref_num = response_content["referenceNo"]
             print(current_ref_num)
-            return "success"
+            return json.dumps({code:200, status: "good"})
         except Exception as e:
             print(e)
             return "Something Went Wrong"
@@ -67,10 +67,11 @@ def verify():
             verify_params["otp"] = otp
             response = requests.post(generate_url, params=verify_params)
             response_content  = dict(response.content)
-            status = response_content["subscriptionStatus"]
+            success = response_content["subscriptionStatus"]
             # return "POST hit"
-            print(status)
-            return status
+            print(success)
+            # return status
+            return json.dumps({code:200, status: success,})
         except Exception as e:
             print(e)
             return "Something Went Wrong"
