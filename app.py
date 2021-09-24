@@ -13,8 +13,8 @@ app = Flask('app')
 APP_ID = "APP_062044"
 PASSWORD = "4cce7809bbf5609ae54e3d726ebc4833"
 DEFAULT_SUBSCRIBER_ID= "tel:94766679727"
-APP_HASH = "ayush123"
-# APP_HASH = "abcdefgh"
+# APP_HASH = "ayush123"
+APP_HASH = "abcdefgh"
 
 current_ref_num = "213561321321613"
 current_otp = "123564"
