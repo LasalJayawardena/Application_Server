@@ -58,9 +58,7 @@ def generate():
             print("\n"+tel_str+"\n")
             response = requests.post(generate_url, headers=headers_dict, data=json.dumps(gen_params))
             print(response.content)
-            # return(response.json)
             response_content  = json.loads(response.text)
-            # print(response_content)
             current_ref_num = response_content["referenceNo"]
             verify_params["referenceNo"] = current_ref_num
             print(current_ref_num)
@@ -92,8 +90,6 @@ def verify():
             print(response_content)
             print("valid")
             success = response_content["statusDetail"]
-            # print(success)
-            # # return status
             return json.dumps({"code":200, "status": success})
         except Exception as e:
             print(e)
@@ -103,7 +99,35 @@ def verify():
 
 @app.route('/test', methods=['GET', 'POST'])
 def test():
-    return json.dumps({"status": 200, "msg":"success"})
+    if request.method == 'GET':
+        return "<h1>Un-Register path works</h1>"
+    elif request.method == 'POST':
+        try:
+            # return json.dumps({"code":200, "status": "good"})
+            tel_str = "tel:94766679727"
+            gen_params = generate_params
+            gen_params["subscriberId"] = tel_str
+            gen_params["action"] = "0"
+            print("\n"+tel_str+"\n")
+            response = requests.post(generate_url, headers=headers_dict, data=json.dumps(gen_params))
+            print(response.content)
+            response_content  = json.loads(response.text)
+            current_ref_num = response_content["referenceNo"]
+            verify_params["referenceNo"] = current_ref_num
+            print(current_ref_num)
+            return json.dumps({"code":200, "status": "good", "referenceNo":current_ref_num })
+        except Exception as e:
+            print(e)
+            return json.dumps({"code":400, "status": "error", "error": str(e)})
+        return "POST hit"
+    else:
+        return "Unknown Request type."
+
+
+@app.route('/unregister', methods=['GET', 'POST'])
+def unregister():
+
+
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0')
