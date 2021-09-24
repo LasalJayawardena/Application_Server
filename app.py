@@ -18,8 +18,8 @@ APP_HASH = "abcdefgh"
 
 current_ref_num = "213561321321613"
 current_otp = "123564"
-verify_url = "https://api.hSenidMobile.lk/otp/verify"
-generate_url = "https://api.hSenidMobile.lk/otp/request"
+verify_url = "https://api.dialog.lk/subscription/otp/verify"
+generate_url = "https://api.dialog.lk/subscription/otp/request"
 
 generate_params = {
     "applicationId": APP_ID,
