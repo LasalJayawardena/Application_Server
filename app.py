@@ -77,8 +77,8 @@ def verify():
     else:
         "Unknown Request type."
 
-@app.route('/verify', methods=['GET', 'POST'])
-def verify():
+@app.route('/test', methods=['GET', 'POST'])
+def test():
     return json.dumps({"status: 200", "msg":"success"})
 
 if __name__ == '__main__':
