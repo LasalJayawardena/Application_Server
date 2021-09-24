@@ -51,7 +51,7 @@ def generate():
         return "<h1>Generate path works</h1>"
     elif request.method == 'POST':
         try:
-            return json.dumps({"code":200, "status": "good"})
+            # return json.dumps({"code":200, "status": "good"})
             tel_str = request.args.get("tel")
             gen_params = generate_params
             gen_params["subscriberId"] = tel_str
@@ -64,7 +64,7 @@ def generate():
             current_ref_num = response_content["referenceNo"]
             verify_params["referenceNo"] = current_ref_num
             print(current_ref_num)
-            # return json.dumps({"code":200, "status": "good", "referenceNo":current_ref_num })
+            return json.dumps({"code":200, "status": "good", "referenceNo":current_ref_num })
         except Exception as e:
             print(e)
             return json.dumps({"code":400, "status": "error", "error": str(e)})
