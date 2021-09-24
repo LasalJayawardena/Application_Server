@@ -77,7 +77,7 @@ def verify():
         return "<h1>Verify path works</h1>"
     elif request.method == 'POST':
         try:
-            # return json.dumps({"code":200, "status": "valid"})
+            return json.dumps({"code":200, "status": "valid"})
             otp = request.args.get("otp")
             # if otp == None:
             #     raise Exception("OTP not provided")
