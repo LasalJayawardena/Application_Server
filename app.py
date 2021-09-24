@@ -57,7 +57,7 @@ def generate():
             print("\n"+tel_str+"\n")
             response = requests.post(generate_url, headers=headers_dict, data=json.dumps(gen_params))
             print(response.content)
-            response_content  = json.load(response.content)
+            response_content  = json.load(response.text)
             print(response_content)
             current_ref_num = response_content["referenceNo"]
             print(current_ref_num)
@@ -82,7 +82,7 @@ def verify():
             verify_p["otp"] = otp
             verify_p["referenceNo"] = current_ref_num
             response = requests.post(generate_url, headers=headers_dict, data=json.dumps(verify_p))
-            response_content  = json.load(response.content)
+            response_content  = json.load(response.text)
             success = response_content["subscriptionStatus"]
             print(success)
             # return status
