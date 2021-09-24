@@ -80,8 +80,8 @@ def verify():
         try:
             # return json.dumps({"code":200, "status": "valid"})
             otp = request.args.get("otp")
-            if otp == None:
-                raise Exception("OTP not provided")
+            # if otp == None:
+            #     raise Exception("OTP not provided")
             verify_p = verify_params
             verify_p["otp"] = otp
             print("otp is", otp)
