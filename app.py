@@ -64,9 +64,11 @@ def verify():
     elif request.method == 'POST':
         try:
             otp = request.args.get("otp")
-            verify_params = verify_params
-            verify_params["otp"] = otp
-            response = requests.post(generate_url, params=verify_params)
+            if opt == None:
+                raise Exception("OTP notprovided")
+            verify_p = verify_params
+            verify_p["otp"] = otp
+            response = requests.post(generate_url, params=verify_p)
             response_content  = dict(response.content)
             success = response_content["subscriptionStatus"]
             print(success)
