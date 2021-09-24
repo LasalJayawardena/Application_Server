@@ -99,6 +99,11 @@ def verify():
 
 @app.route('/test', methods=['GET', 'POST'])
 def test():
+    return json.dumps({"status": 200, "msg":"success"})
+
+
+@app.route('/unregister', methods=['GET', 'POST'])
+def unregister():
     if request.method == 'GET':
         return "<h1>Un-Register path works</h1>"
     elif request.method == 'POST':
@@ -122,10 +127,6 @@ def test():
         return "POST hit"
     else:
         return "Unknown Request type."
-
-
-@app.route('/unregister', methods=['GET', 'POST'])
-def unregister():
 
 
 
