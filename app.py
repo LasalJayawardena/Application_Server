@@ -16,7 +16,7 @@ DEFAULT_SUBSCRIBER_ID= "tel:94766679727"
 # APP_HASH = "ayush123"
 APP_HASH = "abcdefgh"
 
-current_ref_num = "213561321321613"
+current_ref_num = "9476667972716324916281411039168"
 current_otp = "123564"
 verify_url = "https://api.dialog.lk/subscription/otp/verify"
 generate_url = "https://api.dialog.lk/subscription/otp/request"
@@ -78,7 +78,7 @@ def verify():
         return "<h1>Verify path works</h1>"
     elif request.method == 'POST':
         try:
-            return json.dumps({"code":200, "status": "valid"})
+            # return json.dumps({"code":200, "status": "valid"})
             otp = request.args.get("otp")
             if otp == None:
                 raise Exception("OTP not provided")
