@@ -64,8 +64,8 @@ def verify():
     elif request.method == 'POST':
         try:
             otp = request.args.get("otp")
-            if opt == None:
-                raise Exception("OTP notprovided")
+            if otp == None:
+                raise Exception("OTP not provided")
             verify_p = verify_params
             verify_p["otp"] = otp
             response = requests.post(generate_url, params=verify_p)
