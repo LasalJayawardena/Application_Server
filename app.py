@@ -56,15 +56,11 @@ def generate():
             gen_params["subscriberId"] = tel_str
             print("\n"+tel_str+"\n")
             response = requests.post(generate_url, headers=headers_dict, data=json.dumps(gen_params))
-            return str(response.content)
-            # return response.content
-            # if response.status_code != 200:
-            # print(response.__dict__)
-            # response_content  = dict(response.__dict__)
-            # print(response_content)
-            # current_ref_num = response_content["referenceNo"]
-            # print(current_ref_num)
-            # return json.dumps({"code":200, "status": "good"})
+            response_content  = dict(response.content)
+            print(response_content)
+            current_ref_num = response_content["referenceNo"]
+            print(current_ref_num)
+            return json.dumps({"code":200, "status": "good"})
         except Exception as e:
             print(e)
             return json.dumps({"code":400, "status": "error", "error": str(e)})
@@ -84,7 +80,7 @@ def verify():
             verify_p = verify_params
             verify_p["otp"] = otp
             verify_p["referenceNo"] = current_ref_num
-            response = requests.post(generate_url, headers=headers_dict, params=verify_p)
+            response = requests.post(generate_url, headers=headers_dict, data=json.dumps(verify_p))
             response_content  = dict(response.content)
             success = response_content["subscriptionStatus"]
             print(success)
