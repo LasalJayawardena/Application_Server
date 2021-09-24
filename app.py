@@ -89,7 +89,7 @@ def verify():
             response_content  = json.loads(response.text)
             print(response_content)
             print("valid")
-            success = response_content["subscriptionStatus"]
+            success = response_content["statusDetail"]
             # print(success)
             # # return status
             return json.dumps({"code":200, "status": success})
