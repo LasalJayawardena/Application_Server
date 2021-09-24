@@ -62,10 +62,10 @@ def generate():
             # print(response_content)
             current_ref_num = response_content["referenceNo"]
             print(current_ref_num)
-            return json.dumps({"code":200, "status": "good"})
+            return json.dumps({"code":200, "status": "good", "referenceNo":current_ref_num })
         except Exception as e:
             print(e)
-            return json.dumps({"code":400, "status": "error", "referenceNo":current_ref_num ,"error": str(e)})
+            return json.dumps({"code":400, "status": "error", "error": str(e)})
         return "POST hit"
     else:
         return "Unknown Request type."
@@ -85,10 +85,11 @@ def verify():
             response = requests.post(verify_url, headers=headers_dict, data=json.dumps(verify_p))
             response_content  = json.loads(response.text)
             print(response_content)
-            success = response_content["subscriptionStatus"]
-            print(success)
+            print("valid")
+            # success = response_content["subscriptionStatus"]
+            # print(success)
             # # return status
-            return json.dumps({"code":200, "status": success,})
+            # return json.dumps({"code":200, "status": success,})
         except Exception as e:
             print(e)
             return json.dumps({"code":400, "status": "error", "error": str(e)})
