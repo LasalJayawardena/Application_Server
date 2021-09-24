@@ -54,7 +54,7 @@ def generate():
             response = requests.post(generate_url, params=gen_params)
             # return response.content
             # if response.status_code != 200:
-
+            print(response)
             response_content  = dict(response)
             print(response_content)
             current_ref_num = response_content["referenceNo"]
