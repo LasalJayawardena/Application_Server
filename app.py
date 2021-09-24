@@ -52,13 +52,13 @@ def generate():
             gen_params["subscriberId"] = tel_str
             print(gen_params)
             response = requests.post(generate_url, params=gen_params)
-            return response.content
+            # return response.content
             # if response.status_code != 200:
 
-            # response_content  = dict(response.content)
-            # current_ref_num = response_content["referenceNo"]
-            # print(current_ref_num)
-            # return json.dumps({"code":200, "status": "good"})
+            response_content  = dict(response.content)
+            current_ref_num = response_content["referenceNo"]
+            print(current_ref_num)
+            return json.dumps({"code":200, "status": "good"})
         except Exception as e:
             print(e)
             return json.dumps({"code":400, "status": "error", "error": str(e)})
