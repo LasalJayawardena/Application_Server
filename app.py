@@ -116,10 +116,8 @@ def unregister():
             print("\n"+tel_str+"\n")
             response = requests.post(generate_url, headers=headers_dict, data=json.dumps(gen_params))
             print(response.content)
-            response_content  = json.loads(response.text)
-            current_ref_num = response_content["referenceNo"]
-            verify_params["referenceNo"] = current_ref_num
-            print(current_ref_num)
+            if response.status_code != 200:
+                raise Exception("Error didnt work")
             return json.dumps({"code":200, "status": "good", "referenceNo":current_ref_num })
         except Exception as e:
             print(e)
