@@ -1,0 +1,15 @@
+curl --location --request POST 'https://api.hSenidMobile.lk/otp/request' \
+--header 'Content-Type: application/json' \
+-d '
+{
+  "applicationId":"APP_062044",
+  "password":"4cce7809bbf5609ae54e3d726ebc4833",
+  "subscriberId": "tel:94766679727",
+  "applicationHash": "abcdefgh",
+  "applicationMetaData": {
+    "client": "MOBILEAPP",
+    "device": "Samsung S10",
+    "os": "android 8",
+    "appCode": "https://play.google.com/store/apps/details?id=lk.dialog.megarunlor"
+  }
+}'

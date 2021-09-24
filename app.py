@@ -26,6 +26,12 @@ generate_params = {
     "password": PASSWORD,
     "subscriberId": DEFAULT_SUBSCRIBER_ID,
     "applicationHash": APP_HASH,
+    "applicationMetaData": {
+    "client": "MOBILEAPP",
+    "device": "Samsung S10",
+    "os": "android 8",
+    "appCode": "https://play.google.com/store/apps/details?id=lk.dialog.megarunlor"
+  }
 }
 
 verify_params = {
