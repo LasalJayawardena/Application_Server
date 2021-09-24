@@ -20,6 +20,7 @@ current_ref_num = "9476667972716324916281411039168"
 current_otp = "123564"
 verify_url = "https://api.dialog.lk/subscription/otp/verify"
 generate_url = "https://api.dialog.lk/subscription/otp/request"
+unregister_url = "https://api.dialog.lk/subscription/send"
 
 generate_params = {
     "applicationId": APP_ID,
@@ -114,7 +115,7 @@ def unregister():
             gen_params["subscriberId"] = tel_str
             gen_params["action"] = "0"
             print("\n"+tel_str+"\n")
-            response = requests.post(generate_url, headers=headers_dict, data=json.dumps(gen_params))
+            response = requests.post(unregister_url, headers=headers_dict, data=json.dumps(gen_params))
             print(response.content)
             if response.status_code != 200:
                 raise Exception("Error didnt work")
