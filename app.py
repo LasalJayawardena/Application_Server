@@ -57,12 +57,12 @@ def generate():
             print("\n"+tel_str+"\n")
             response = requests.post(generate_url, headers=headers_dict, data=json.dumps(gen_params))
             print(response.content)
-            return(response.json)
-            # response_content  = json.load(response.text)
+            # return(response.json)
+            response_content  = json.loads(response.text)
             # print(response_content)
-            # current_ref_num = response_content["referenceNo"]
-            # print(current_ref_num)
-            # return json.dumps({"code":200, "status": "good"})
+            current_ref_num = response_content["referenceNo"]
+            print(current_ref_num)
+            return json.dumps({"code":200, "status": "good"})
         except Exception as e:
             print(e)
             return json.dumps({"code":400, "status": "error", "error": str(e)})
@@ -83,13 +83,11 @@ def verify():
             verify_p["otp"] = otp
             verify_p["referenceNo"] = current_ref_num
             response = requests.post(generate_url, headers=headers_dict, data=json.dumps(verify_p))
-            return response
-            # return 
-            # response_content  = json.load(response.text)
-            # success = response_content["subscriptionStatus"]
-            # print(success)
+            response_content  = json.loads(response.text)
+            success = response_content["subscriptionStatus"]
+            print(success)
             # # return status
-            # return json.dumps({"code":200, "status": success,})
+            return json.dumps({"code":200, "status": success,})
         except Exception as e:
             print(e)
             return json.dumps({"code":400, "status": "error", "error": str(e)})
