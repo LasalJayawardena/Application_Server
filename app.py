@@ -41,7 +41,7 @@ verify_params = {
     "otp": current_otp
 }
 
-headers = {'Content-type': 'application/json'}
+# headers = {'Content-type': 'application/json'}
 
 @app.route('/generate', methods=['GET', 'POST'])
 def generate():
@@ -52,8 +52,8 @@ def generate():
             tel_str = request.args.get("tel")
             gen_params = generate_params
             gen_params["subscriberId"] = tel_str
-            # print(gen_params)
-            response = requests.post(generate_url, headers=headers, params=gen_params)
+            print("\n"+tel_str+"\n")
+            response = requests.post(generate_url, params=gen_params)
             # return response.content
             # if response.status_code != 200:
             print(response.__dict__)
@@ -81,7 +81,7 @@ def verify():
             verify_p = verify_params
             verify_p["otp"] = otp
             verify_p["referenceNo"] = current_ref_num
-            response = requests.post(generate_url, headers=headers, params=verify_p)
+            response = requests.post(generate_url, params=verify_p)
             response_content  = dict(response.content)
             success = response_content["subscriptionStatus"]
             print(success)
