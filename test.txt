@@ -1,4 +1,4 @@
-curl --location --request POST 'https://api.hSenidMobile.lk/otp/request' \
+curl --location --request POST 'https://api.dialog.lk/subscription/otp/request' \
 --header 'Content-Type: application/json' \
 -d '
 {

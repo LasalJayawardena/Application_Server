@@ -52,10 +52,13 @@ def generate():
             gen_params["subscriberId"] = tel_str
             print(gen_params)
             response = requests.post(generate_url, params=gen_params)
-            response_content  = dict(response.content)
-            current_ref_num = response_content["referenceNo"]
-            print(current_ref_num)
-            return json.dumps({"code":200, "status": "good"})
+            return response
+            # if response.status_code != 200:
+
+            # response_content  = dict(response.content)
+            # current_ref_num = response_content["referenceNo"]
+            # print(current_ref_num)
+            # return json.dumps({"code":200, "status": "good"})
         except Exception as e:
             print(e)
             return json.dumps({"code":400, "status": "error", "error": str(e)})
@@ -74,6 +77,7 @@ def verify():
                 raise Exception("OTP not provided")
             verify_p = verify_params
             verify_p["otp"] = otp
+            verify_p["referenceNo"] = current_ref_num
             response = requests.post(generate_url, params=verify_p)
             response_content  = dict(response.content)
             success = response_content["subscriptionStatus"]
